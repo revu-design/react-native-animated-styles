@@ -91,10 +91,15 @@ function createComponent(WrappedComponent) {
       let styles = {};
 
       Object.keys(finish).forEach(key => {
-        styles[key] = this.state.animatedValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: this.getOutputRange(key, start, finish)
-        })
+        const outputRange = this.getOutputRange(key, start, finish);
+        if (outputRange[0] === outputRange[1]) {
+          styles[key] = outputRange[0];
+        } else {
+          styles[key] = this.state.animatedValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: this.getOutputRange(key, start, finish)
+          })
+        }
       });
 
       return styles;
