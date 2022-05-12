@@ -2,10 +2,10 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 
 import {
-  Animated,
-  ViewPropTypes
+  Animated
 } from 'react-native';
 
 import {
